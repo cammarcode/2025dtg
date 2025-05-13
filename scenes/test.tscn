@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw82ih4rh5rmo"]
+
+[ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="1_wpuf1"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_txnar"]
+
+[node name="test" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -232.0
+offset_top = -392.0
+offset_right = 1440.0
+offset_bottom = 839.0
+color = Color(0.43134, 0.43134, 0.43134, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = 148.0
+offset_right = 1154.0
+offset_bottom = 212.0
+color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = -289.0
+offset_right = 1162.0
+offset_bottom = -226.0
+color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = 666.0
+offset_right = 1152.0
+offset_bottom = 729.0
+color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[node name="Car" parent="." instance=ExtResource("1_wpuf1")]
+position = Vector2(587, 382)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(26, 224)
+zoom = Vector2(0.6, 0.6)
+script = ExtResource("2_txnar")
