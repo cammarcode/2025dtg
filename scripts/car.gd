@@ -3,15 +3,19 @@ extends CharacterBody2D
 const max_speed = 1500
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
-var acceleration = 500 #px/s^2
-var max_turn_rate = 0.004 #rad/m/s
+var acceleration = 300 #px/s^2
+var max_turn_rate = 0.003 #rad/m/s
 var turn_rate = 0 #rad/m/s
-var turn_rate_rate = 0.02 #rad/m/s
-var friction = 300 #px/s^2
+var turn_rate_rate = 0.015 #rad/m/s
+var friction = 500 #px/s^2
 var brake_rate = 1400 #px/s^2
 var angle = 0
 var flag
 var prev_speed = 0
+var start_pos
+
+func _ready():
+	start_pos = position
 
 func angle_to_vector():
 	velocity_vector = Vector2(sin(angle), -cos(angle))
@@ -32,7 +36,7 @@ func _physics_process(delta):
 			speed -= friction*delta
 			speed = clamp(speed, 0, max_speed)
 		elif speed < 0:
-			speed -= friction*delta
+			speed += friction*delta
 			speed = clamp(speed, -max_speed/2, 0)
 	flag = false
 	if Input.is_action_pressed("turn_left"):
@@ -59,3 +63,11 @@ func _physics_process(delta):
 	rotation = angle
 	velocity = velocity_vector * speed
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	position = start_pos
+	speed = 0
+	velocity_vector = Vector2(0,-1)
+	angle = 0
+	rotation = 0
