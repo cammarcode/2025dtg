@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw82ih4rh5rmo"]
 
 [ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="1_wpuf1"]
-[ext_resource type="Script" uid="uid://8e3sou63krg7" path="res://scripts/camera.gd" id="2_txnar"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_txnar"]
 
 [node name="test" type="Node2D"]
 
@@ -10,7 +10,7 @@ z_index = -1
 offset_left = -232.0
 offset_top = -392.0
 offset_right = 1440.0
-offset_bottom = 10531.0
+offset_bottom = 839.0
 color = Color(0.43134, 0.43134, 0.43134, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -31,152 +31,6 @@ offset_left = -2.0
 offset_top = 666.0
 offset_right = 1152.0
 offset_bottom = 729.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="."]
-offset_top = 1540.0
-offset_right = 1154.0
-offset_bottom = 1604.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="."]
-offset_left = 8.0
-offset_top = 1103.0
-offset_right = 1162.0
-offset_bottom = 1166.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="."]
-offset_left = -2.0
-offset_top = 2058.0
-offset_right = 1152.0
-offset_bottom = 2121.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="."]
-offset_left = 10.0
-offset_top = 2832.0
-offset_right = 1164.0
-offset_bottom = 2896.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="."]
-offset_left = 18.0
-offset_top = 2395.0
-offset_right = 1172.0
-offset_bottom = 2458.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect10" type="ColorRect" parent="."]
-offset_left = 8.0
-offset_top = 3350.0
-offset_right = 1162.0
-offset_bottom = 3413.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect11" type="ColorRect" parent="."]
-offset_left = 10.0
-offset_top = 4224.0
-offset_right = 1164.0
-offset_bottom = 4288.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect12" type="ColorRect" parent="."]
-offset_left = 18.0
-offset_top = 3787.0
-offset_right = 1172.0
-offset_bottom = 3850.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect13" type="ColorRect" parent="."]
-offset_left = 8.0
-offset_top = 4742.0
-offset_right = 1162.0
-offset_bottom = 4805.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect14" type="ColorRect" parent="."]
-offset_left = 20.0
-offset_top = 5529.0
-offset_right = 1174.0
-offset_bottom = 5593.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect15" type="ColorRect" parent="."]
-offset_left = 28.0
-offset_top = 5092.0
-offset_right = 1182.0
-offset_bottom = 5155.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect16" type="ColorRect" parent="."]
-offset_left = 18.0
-offset_top = 6047.0
-offset_right = 1172.0
-offset_bottom = 6110.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect17" type="ColorRect" parent="."]
-offset_left = 20.0
-offset_top = 6921.0
-offset_right = 1174.0
-offset_bottom = 6985.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect18" type="ColorRect" parent="."]
-offset_left = 28.0
-offset_top = 6484.0
-offset_right = 1182.0
-offset_bottom = 6547.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect19" type="ColorRect" parent="."]
-offset_left = 18.0
-offset_top = 7439.0
-offset_right = 1172.0
-offset_bottom = 7502.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect20" type="ColorRect" parent="."]
-offset_left = 30.0
-offset_top = 8213.0
-offset_right = 1184.0
-offset_bottom = 8277.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect21" type="ColorRect" parent="."]
-offset_left = 38.0
-offset_top = 7776.0
-offset_right = 1192.0
-offset_bottom = 7839.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect22" type="ColorRect" parent="."]
-offset_left = 28.0
-offset_top = 8731.0
-offset_right = 1182.0
-offset_bottom = 8794.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect23" type="ColorRect" parent="."]
-offset_left = 30.0
-offset_top = 9605.0
-offset_right = 1184.0
-offset_bottom = 9669.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect24" type="ColorRect" parent="."]
-offset_left = 38.0
-offset_top = 9168.0
-offset_right = 1192.0
-offset_bottom = 9231.0
-color = Color(0.762404, 0.762404, 0.762404, 1)
-
-[node name="ColorRect25" type="ColorRect" parent="."]
-offset_left = 28.0
-offset_top = 10123.0
-offset_right = 1182.0
-offset_bottom = 10186.0
 color = Color(0.762404, 0.762404, 0.762404, 1)
 
 [node name="Car" parent="." instance=ExtResource("1_wpuf1")]

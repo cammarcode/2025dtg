@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpi4tofio82rs"]
-
-[ext_resource type="TileSet" uid="uid://dtptve1xonn4u" path="res://tileMaps/mapOneRoofTops.tres" id="1_djqwu"]
-
-[node name="mapOne" type="Node2D"]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = ExtResource("1_djqwu")
