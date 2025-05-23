@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw82ih4rh5rmo"]
 
 [ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="1_wpuf1"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="2_txnar"]
+[ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="2_txnar"]
 
 [node name="test" type="Node2D"]
 
