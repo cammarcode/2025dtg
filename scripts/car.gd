@@ -61,6 +61,9 @@ func _physics_process(delta):
 		turn_rate = 0
 	if Input.is_action_pressed("brake"):
 		speed -= brake_rate * delta
+	if Input.is_action_pressed("drift"):
+		turn_rate += turn_rate_rate*delta*2
+	print(fix_spin)
 	
 	if roating:
 		angle += delta*PI*10*randf_range(1.9,2.1)
