@@ -4,9 +4,9 @@ const max_speed = 1500
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
-var max_turn_rate = 0.003 #rad/m/s
-var turn_rate = 0 #rad/m/s
-var turn_rate_rate = 0.015 #rad/m/s
+var max_turn_rate = 0.003 #rad/m/s   Maximum turning speed
+var turn_rate = 0 #rad/m/s           Current turning speed
+var turn_rate_rate = 0.015 #rad/m/s  How quickly turn speed increases
 var friction = 500 #px/s^2
 var brake_rate = 1400 #px/s^2
 var angle = 0
@@ -19,19 +19,20 @@ var fix_spin = false
 func _ready():
 	start_pos = position
 
-func angle_to_vector():
+func angle_to_vector(): # read the function name fuckwad
 	velocity_vector = Vector2(sin(angle), -cos(angle))
 
 
 func _physics_process(delta):
 	if Input.is_action_pressed("accelerate"):
 		#print(speed-prev_speed)
-		prev_speed = speed
+		prev_speed = speed # for testing
 		
-		
+		# acceleration is scaled so that its slower at higher speeds
 		speed += acceleration * delta * ((500/(clamp(speed, 0, max_speed)+500)) + 1) 
 		speed = clamp(speed, -max_speed/2,max_speed)
 	else:
+		# This section does max speeds and stopping
 		if abs(speed) <= friction*delta*2:
 			speed = 0
 		if speed > 0:
@@ -41,14 +42,17 @@ func _physics_process(delta):
 			speed += friction*delta
 			speed = clamp(speed, -max_speed/2, 0)
 	flag = false
-	if Input.is_action_pressed("turn_left") or fix_spin:
+	
+	if Input.is_action_pressed("turn_left") or fix_spin: # fix_spin turns the player left for 1 frame lol
 		flag = true
 		turn_rate += turn_rate_rate*delta
 		turn_rate = clamp(turn_rate, 0, max_turn_rate)
 		angle -= turn_rate * delta * speed
+		# this code keeps the angle small
 		if angle < -2*PI:
 			angle += 2*PI
 		angle_to_vector()
+		
 	if Input.is_action_pressed("turn_right"):
 		flag = true
 		turn_rate += turn_rate_rate*delta
@@ -57,6 +61,8 @@ func _physics_process(delta):
 		if angle > 2*PI:
 			angle += 2*PI
 		angle_to_vector()
+		
+	#flag checks if you are turning to reset turn_rate - see above code
 	if flag == false:
 		turn_rate = 0
 	if Input.is_action_pressed("brake"):
@@ -69,6 +75,7 @@ func _physics_process(delta):
 		angle += delta*PI*10*randf_range(1.9,2.1)
 	
 	rotation = angle
+	# SPEED AND DIRECTION ARE STORED SEPERATELY!!!
 	velocity = velocity_vector * speed
 	move_and_slide()
 	
