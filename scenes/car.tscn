@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=4 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(64, 128)
 
-[node name="Car" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c35m8"]
+size = Vector2(63, 135)
+
+[node name="Car" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g25lt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("RectangleShape2D_eyc5j")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." groups=["player"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,9 +28,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.86495, 0, 0.177401, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." groups=["player"]]
 offset_left = -21.0
 offset_top = -55.0
 offset_right = 19.0
 offset_bottom = -42.0
 color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_c35m8")
+
+[node name="spin_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="fix_spin" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="spin_timer" to="." method="_on_spin_timer_timeout"]
+[connection signal="timeout" from="fix_spin" to="." method="_on_fix_spin_timeout"]

@@ -49,12 +49,10 @@ position = Vector2(26, 224)
 zoom = Vector2(0.6, 0.6)
 script = ExtResource("2_txnar")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(569, -138, 199, -602, -219, -763, -983, -808, -1407, -1493, -898, -2087, 131, -2098, 731, -1583, 1597, -1012, 2485, -356, 1365, 199, 940, 335, 1218, 629, 2089, 408, 2570, 142, 2864, -339, 2694, -1057, 1806, -1510, 935, -2075, 80, -2466, -819, -2454, -1820, -1996, -2143, -1136, -1356, -740, -926, -248, 47, -180)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-163, -1470, 1376, -667, 1353, -163, 871, -145, 686, -606, 274, -931, -567, -1210, -706, -1562, -258, -1638)
-
-[connection signal="body_entered" from="Area2D" to="Car" method="_on_area_2d_body_entered"]

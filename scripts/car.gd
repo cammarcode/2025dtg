@@ -13,6 +13,8 @@ var angle = 0
 var flag
 var prev_speed = 0
 var start_pos
+var roating = false
+var fix_spin = false
 
 func _ready():
 	start_pos = position
@@ -23,7 +25,7 @@ func angle_to_vector():
 
 func _physics_process(delta):
 	if Input.is_action_pressed("accelerate"):
-		print(speed-prev_speed)
+		#print(speed-prev_speed)
 		prev_speed = speed
 		
 		
@@ -39,7 +41,7 @@ func _physics_process(delta):
 			speed += friction*delta
 			speed = clamp(speed, -max_speed/2, 0)
 	flag = false
-	if Input.is_action_pressed("turn_left"):
+	if Input.is_action_pressed("turn_left") or fix_spin:
 		flag = true
 		turn_rate += turn_rate_rate*delta
 		turn_rate = clamp(turn_rate, 0, max_turn_rate)
@@ -59,15 +61,30 @@ func _physics_process(delta):
 		turn_rate = 0
 	if Input.is_action_pressed("brake"):
 		speed -= brake_rate * delta
-		
+	
+	if roating:
+		angle += delta*PI*10*randf_range(1.9,2.1)
+	
 	rotation = angle
 	velocity = velocity_vector * speed
 	move_and_slide()
+	
+	
 
 
 func _on_area_2d_body_entered(body):
-	position = start_pos
-	speed = 0
-	velocity_vector = Vector2(0,-1)
-	angle = 0
-	rotation = 0
+	if not body.is_in_group('player'):
+		if speed >= 1300:
+			$spin_timer.start(0.5)
+			roating = true
+		speed = -speed/2
+		
+
+func _on_spin_timer_timeout() -> void:
+	roating = false
+	fix_spin = true
+	$fix_spin.start(0.1)
+
+
+func _on_fix_spin_timeout() -> void:
+	fix_spin = false
