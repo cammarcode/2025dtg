@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djxmfyjhhqyo5"
-path="res://.godot/imported/tilemappacked.png-7bf8e23002824109933e4cc437fa261e.ctex"
+path="res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileMaps/tilemappacked.png"
-dest_files=["res://.godot/imported/tilemappacked.png-7bf8e23002824109933e4cc437fa261e.ctex"]
+source_file="res://sprites/tileMaps/tilemappacked.png"
+dest_files=["res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"]
 
 [params]
 
