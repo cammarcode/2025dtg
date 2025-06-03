@@ -29,7 +29,8 @@ func _physics_process(delta):
 		prev_speed = speed # for testing
 		
 		# acceleration is scaled so that its slower at higher speeds
-		speed += acceleration * delta * ((500/(clamp(speed, 0, max_speed)+500)) + 1) 
+		# decrease funny number to slow more
+		speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
 		speed = clamp(speed, -max_speed/2,max_speed)
 	else:
 		# This section does max speeds and stopping
@@ -81,7 +82,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if not body.is_in_group('player'):
-		if speed >= 1300:
+		if speed >= 1600:
 			$spin_timer.start(0.5)
 			roating = true
 		speed = -speed/2
