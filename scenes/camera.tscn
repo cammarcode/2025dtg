@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjdswe2341iu4"]
+
+[ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="1_u5kg4"]
+[ext_resource type="Texture2D" uid="uid://ftn7eqnejbdu" path="res://sprites/fueltank.png" id="2_kod1s"]
+[ext_resource type="Shader" uid="uid://ccnjiyrmwmq35" path="res://shaders/test.gdshader" id="3_tmlye"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtx3x"]
+shader = ExtResource("3_tmlye")
+shader_parameter/level = 0.0
+
+[node name="Camera" type="Camera2D"]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("1_u5kg4")
+
+[node name="FuelTank" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="TextureRect" parent="FuelTank"]
+z_index = 1
+texture = ExtResource("2_kod1s")
+
+[node name="ColorRect" type="ColorRect" parent="FuelTank"]
+material = SubResource("ShaderMaterial_gtx3x")
+offset_left = 23.0
+offset_top = 37.0
+offset_right = 110.0
+offset_bottom = 217.0
+color = Color(1, 1, 0, 1)
