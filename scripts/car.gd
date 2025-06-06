@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const max_speed = 1500
+const max_speed = 1800.0
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
@@ -15,6 +15,11 @@ var prev_speed = 0
 var start_pos
 var roating = false
 var fix_spin = false
+var fuel = 150
+var fuel_max = 150
+var fuel_loss_rate = 10 # KiloGallons per second
+var boost_cooldown = true
+
 
 func _ready():
 	start_pos = position
@@ -22,6 +27,12 @@ func _ready():
 func angle_to_vector(): # read the function name fuckwad
 	velocity_vector = Vector2(sin(angle), -cos(angle))
 
+func _process(delta):
+	if fuel <= 0:
+		pass
+	$CanvasLayer/FuelTank/ColorRect.get_material().set_shader_parameter("level", 1-(fuel/fuel_max))
+	fuel -= fuel_loss_rate * delta
+	
 
 func _physics_process(delta):
 	if Input.is_action_pressed("accelerate"):
@@ -62,6 +73,12 @@ func _physics_process(delta):
 		if angle > 2*PI:
 			angle += 2*PI
 		angle_to_vector()
+	
+	if Input.is_action_pressed("boost")and boost_cooldown:
+		speed += 1000
+		fuel -= 20
+		boost_cooldown = false
+		$boost_timer.start()
 		
 	#flag checks if you are turning to reset turn_rate - see above code
 	if flag == false:
@@ -96,3 +113,7 @@ func _on_spin_timer_timeout() -> void:
 
 func _on_fix_spin_timeout() -> void:
 	fix_spin = false
+
+
+func _on_boost_timer_timeout() -> void:
+	boost_cooldown = true

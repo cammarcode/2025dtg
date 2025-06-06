@@ -1,19 +1,16 @@
 shader_type canvas_item;
-uniform float level;
-uniform float amplitude;
-uniform float k;
-
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
-void fragment() {
-	
-	if (UV.y < level + amplitude * sin(k*(TIME+UV.x))){
-		COLOR.a = 0.0;
+void fragment(){
+	if(COLOR.a == 0.0){
+		COLOR = vec4(0.0,0.3,0.0,1.0);
 	}
-	// Called for every pixel the material is visible on.
+	else{
+		COLOR = vec4(0.2,0.5,0.2,1.0);
+	}
 }
 
 //void light() {
