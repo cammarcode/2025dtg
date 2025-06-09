@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pix1ag4xu5vn"
-path="res://.godot/imported/tilemap_packed.png-79dd979c12a2382e7fed3d916093f3db.ctex"
+uid="uid://ftn7eqnejbdu"
+path="res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileMaps/tilemap_packed.png"
-dest_files=["res://.godot/imported/tilemap_packed.png-79dd979c12a2382e7fed3d916093f3db.ctex"]
+source_file="res://sprites/fueltank.png"
+dest_files=["res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"]
 
 [params]
 
