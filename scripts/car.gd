@@ -15,6 +15,7 @@ var prev_speed = 0
 var start_pos
 var roating = false
 var fix_spin = false
+var slide = false
 
 func _ready():
 	start_pos = position
@@ -24,8 +25,7 @@ func angle_to_vector(): # read the function name fuckwad
 
 
 func _physics_process(delta):
-	if Input.is_action_pressed("accelerate"):
-		#print(speed-prev_speed)
+	if Input.is_action_pressed("accelerate") and not slide:
 		prev_speed = speed # for testing
 		
 		# acceleration is scaled so that its slower at higher speeds
@@ -69,26 +69,34 @@ func _physics_process(delta):
 		speed -= brake_rate * delta
 	if Input.is_action_pressed("drift"):
 		turn_rate += turn_rate_rate*delta*2
-	print(fix_spin)
 	
 	if roating:
-		angle += delta*PI*10*randf_range(1.9,2.1)
+		if not slide:
+			angle += delta*PI*10*randf_range(1.9,2.1)
+		else:
+			speed -= 20
 	
 	rotation = angle
 	# SPEED AND DIRECTION ARE STORED SEPERATELY!!!
 	velocity = velocity_vector * speed
 	move_and_slide()
 	
-	
+func _on_slide_1_body_entered(body: Node2D) -> void:
+	if not body.is_in_group('player'):
+		slide = true
+
+func _on_slide_2_body_entered(body: Node2D) -> void:
+	if not body.is_in_group('player'):
+		slide = true
 
 
 func _on_area_2d_body_entered(body):
 	if not body.is_in_group('player'):
-		if speed >= 1300:
+		if speed >= 1300 and not slide:
 			$spin_timer.start(0.5)
 			roating = true
+	if not slide and speed >= 300:
 		speed = -speed/2
-		
 
 func _on_spin_timer_timeout() -> void:
 	roating = false
@@ -98,3 +106,14 @@ func _on_spin_timer_timeout() -> void:
 
 func _on_fix_spin_timeout() -> void:
 	fix_spin = false
+	slide = false
+	friction = 500
+
+
+func _on_slide_1_body_exited(body: Node2D) -> void:
+	if not body.is_in_group('player'):
+		slide = false
+
+func _on_slide_2_body_exited(body: Node2D) -> void:
+	if not body.is_in_group('player'):
+		slide = false
