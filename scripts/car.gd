@@ -29,8 +29,7 @@ func _physics_process(delta):
 		prev_speed = speed # for testing
 		
 		# acceleration is scaled so that its slower at higher speeds
-		# decrease funny number to slow more
-		speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
+		speed += acceleration * delta * ((500/(clamp(speed, 0, max_speed)+500)) + 1) 
 		speed = clamp(speed, -max_speed/2,max_speed)
 	else:
 		# This section does max speeds and stopping
@@ -93,7 +92,7 @@ func _on_slide_2_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body):
 	if not body.is_in_group('player'):
-		if speed >= 1600 and not slide:
+		if speed >= 1300 and not slide:
 			$spin_timer.start(0.5)
 			roating = true
 	if not slide and speed >= 300:
