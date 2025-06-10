@@ -19,8 +19,7 @@ var fuel = 150
 var fuel_max = 150
 var fuel_loss_rate = 10 # KiloGallons per second
 var boost_cooldown = true
-
-var slide = false
+var drift = false
 
 func _ready():
 	start_pos = position
@@ -36,7 +35,7 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	if Input.is_action_pressed("accelerate") and not slide:
+	if Input.is_action_pressed("accelerate"):
 		prev_speed = speed # for testing
 		
 		# acceleration is scaled so that its slower at higher speeds
@@ -54,24 +53,42 @@ func _physics_process(delta):
 			speed = clamp(speed, -max_speed/2, 0)
 	flag = false
 	
-	if Input.is_action_pressed("turn_left") or fix_spin: # fix_spin turns the player left for 1 frame lol
-		flag = true
-		turn_rate += turn_rate_rate*delta
-		turn_rate = clamp(turn_rate, 0, max_turn_rate)
-		angle -= turn_rate * delta * speed
-		# this code keeps the angle small
-		if angle < -2*PI:
-			angle += 2*PI
-		angle_to_vector()
+	if Input.is_action_pressed("turn_left") or fix_spin:  # fix_spin turns the player left for 1 frame lol
+		if not drift:
+			flag = true
+			turn_rate += turn_rate_rate*delta
+			turn_rate = clamp(turn_rate, 0, max_turn_rate)
+			angle -= turn_rate * delta * speed
+			# this code keeps the angle small
+			if angle < -2*PI:
+				angle += 2*PI
+			angle_to_vector()
+		else:
+			flag = true
+			turn_rate += turn_rate_rate*delta
+			turn_rate = clamp(turn_rate, 0, max_turn_rate)
+			angle += turn_rate * get_angle_to($Node2D.global_position) * speed/5
+			if angle > 2*PI:
+				angle = 2*PI
+			angle_to_vector()
 		
 	if Input.is_action_pressed("turn_right"):
-		flag = true
-		turn_rate += turn_rate_rate*delta
-		turn_rate = clamp(turn_rate, 0, max_turn_rate)
-		angle += turn_rate * delta * speed
-		if angle > 2*PI:
-			angle += 2*PI
-		angle_to_vector()
+		if not drift:
+			flag = true
+			turn_rate += turn_rate_rate*delta
+			turn_rate = clamp(turn_rate, 0, max_turn_rate)
+			angle += turn_rate * delta * speed
+			if angle > 2*PI:
+				angle += 2*PI
+			angle_to_vector()
+		else:
+			flag = true
+			turn_rate += turn_rate_rate*delta
+			turn_rate = clamp(turn_rate, 0, max_turn_rate)
+			angle -= turn_rate * get_angle_to($Node2D.global_position) * speed/5
+			if angle > 2*PI:
+				angle = 2*PI
+			angle_to_vector()
 	
 	if Input.is_action_pressed("boost")and boost_cooldown:
 		speed += 1000
@@ -85,31 +102,26 @@ func _physics_process(delta):
 	if Input.is_action_pressed("brake"):
 		speed -= brake_rate * delta
 	if Input.is_action_pressed("drift"):
-		turn_rate += turn_rate_rate*delta*2
+		drift = true
+	if Input.is_action_just_released("drift"):
+		drift = false
 	
-	if roating and not slide:
-		angle += delta*PI*10*randf_range(1.9,2.1)
+	if roating:
+		angle += delta*PI*10*randf_range(1.5,1.7)
 	
 	rotation = angle
 	# SPEED AND DIRECTION ARE STORED SEPERATELY!!!
 	velocity = velocity_vector * speed
 	move_and_slide()
-	
-func _on_slide_1_body_entered(body: Node2D) -> void:
-	if not body.is_in_group('player'):
-		slide = true
 
-func _on_slide_2_body_entered(body: Node2D) -> void:
-	if not body.is_in_group('player'):
-		slide = true
 
 
 func _on_area_2d_body_entered(body):
 	if not body.is_in_group('player'):
-		if speed >= 1300 and not slide:
+		if speed >= 1300:
 			$spin_timer.start(0.5)
 			roating = true
-	if not slide and speed >= 300:
+	if speed >= 300:
 		speed = -speed/2
 
 func _on_spin_timer_timeout() -> void:
@@ -120,19 +132,8 @@ func _on_spin_timer_timeout() -> void:
 
 func _on_fix_spin_timeout() -> void:
 	fix_spin = false
-	slide = false
-	friction = 500
 
 
 func _on_boost_timer_timeout() -> void:
 	boost_cooldown = true
 	
-
-
-func _on_slide_1_body_exited(body: Node2D) -> void:
-	if not body.is_in_group('player'):
-		slide = false
-
-func _on_slide_2_body_exited(body: Node2D) -> void:
-	if not body.is_in_group('player'):
-		slide = false
