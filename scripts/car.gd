@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const max_speed = 1500
+const max_speed = 2000
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
@@ -29,7 +29,7 @@ func _physics_process(delta):
 		prev_speed = speed # for testing
 		
 		# acceleration is scaled so that its slower at higher speeds
-		speed += acceleration * delta * ((500/(clamp(speed, 0, max_speed)+500)) + 1) 
+		speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
 		speed = clamp(speed, -max_speed/2,max_speed)
 	else:
 		# This section does max speeds and stopping

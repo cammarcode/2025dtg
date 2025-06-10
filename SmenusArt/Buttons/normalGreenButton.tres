@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dfbhwlydd8r30"]
+
+[ext_resource type="Texture2D" uid="uid://bv23k7715ur5k" path="res://SmenusArt/Green/button_rectangle_line.png" id="1_0od4g"]
+
+[resource]
+texture = ExtResource("1_0od4g")
