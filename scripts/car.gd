@@ -87,11 +87,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("drift"):
 		turn_rate += turn_rate_rate*delta*2
 	
-	if roating:
-		if not slide:
-			angle += delta*PI*10*randf_range(1.9,2.1)
-		else:
-			speed -= 20
+	if roating and not slide:
+		angle += delta*PI*10*randf_range(1.9,2.1)
 	
 	rotation = angle
 	# SPEED AND DIRECTION ARE STORED SEPERATELY!!!

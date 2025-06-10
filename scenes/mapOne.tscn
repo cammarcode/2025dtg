@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cy6v161psqa7t"]
+[gd_scene load_steps=6 format=4 uid="uid://cy6v161psqa7t"]
 
 [ext_resource type="TileSet" uid="uid://dtptve1xonn4u" path="res://sprites/tileMaps/mapOneCopperRoof.tres" id="1_xl573"]
 [ext_resource type="TileSet" uid="uid://dgldnpkrmlaof" path="res://sprites/tileMaps/mapOneGreyRoof.tres" id="2_3qr0b"]
 [ext_resource type="TileSet" uid="uid://ckcpy0vid4y24" path="res://sprites/tileMaps/mapOneWhiteRoof.tres" id="3_kx1jt"]
 [ext_resource type="TileSet" uid="uid://ctrc0mkrim7g1" path="res://sprites/tileMaps/road.tres" id="4_7n1eb"]
 [ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="5_u23v3"]
-[ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="6_xl573"]
 
 [node name="mapOne" type="Node2D"]
 visibility_layer = 3
@@ -37,8 +36,3 @@ tile_set = ExtResource("4_7n1eb")
 
 [node name="Car" parent="." instance=ExtResource("5_u23v3")]
 position = Vector2(493, 1359)
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(26, 224)
-zoom = Vector2(0.5, 0.5)
-script = ExtResource("6_xl573")

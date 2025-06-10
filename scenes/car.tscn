@@ -1,21 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=13 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
-[ext_resource type="Texture2D" uid="uid://ftn7eqnejbdu" path="res://sprites/fueltank.png" id="2_50v30"]
+[ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
+[ext_resource type="Texture2D" uid="uid://bqfo68sct1wwa" path="res://sprites/truck.png" id="2_qt2eu"]
 [ext_resource type="Shader" uid="uid://b0iv80ef76bj8" path="res://shaders/wave.gdshader" id="3_cp117"]
 [ext_resource type="Script" uid="uid://deys3owiwqxma" path="res://scripts/minimap.gd" id="4_3mrxu"]
 [ext_resource type="Shader" uid="uid://c6oxtbovmcp41" path="res://shaders/minimap.gdshader" id="4_cp117"]
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
-[ext_resource type="Texture2D" uid="uid://bqfo68sct1wwa" path="res://sprites/truck.png" id="2_qt2eu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c35m8"]
-size = Vector2(137, 299)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
-size = Vector2(22, 257.219)
+size = Vector2(118, 302)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
 shader = ExtResource("3_cp117")
@@ -25,6 +22,9 @@ shader_parameter/k = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4clw4"]
 shader = ExtResource("4_cp117")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
+size = Vector2(22, 281.78)
 
 [node name="Car" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g25lt")
@@ -58,7 +58,7 @@ color = Color(0, 0, 0, 1)
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
-position = Vector2(1.5, 16.5)
+position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_c35m8")
 
 [node name="spin_timer" type="Timer" parent="."]
@@ -124,13 +124,13 @@ texture = ExtResource("2_qt2eu")
 [node name="slide1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slide1"]
-position = Vector2(-63, 10.6094)
+position = Vector2(-63, 12.8901)
 shape = SubResource("RectangleShape2D_qt2eu")
 
 [node name="slide2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slide2"]
-position = Vector2(66, 10.0313)
+position = Vector2(66, 12.2803)
 shape = SubResource("RectangleShape2D_qt2eu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
