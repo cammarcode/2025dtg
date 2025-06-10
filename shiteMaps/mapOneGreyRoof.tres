@@ -1,13 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dgldnpkrmlaof"]
 
-<<<<<<<< HEAD:shiteMaps/mapOneGreyRoof.tres
 [ext_resource type="Texture2D" uid="uid://5fgpss6p4m8d" path="res://shiteMaps/tilemap_packed.png" id="1_kx8k2"]
-========
-[ext_resource type="Texture2D" uid="uid://ccbqfdowrimkb" path="res://sprites/tileMaps/tilemap_packed.png" id="1_myxm5"]
->>>>>>>> master:sprites/tileMaps/mapOneGreyRoof.tres
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esple"]
-texture = ExtResource("1_myxm5")
+texture = ExtResource("1_kx8k2")
 8:0/0 = 0
 8:0/0/terrain_set = 0
 8:0/0/terrain = 1
