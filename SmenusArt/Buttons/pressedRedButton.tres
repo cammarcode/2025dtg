@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://wrnb7ah150kq"]
+
+[ext_resource type="Texture2D" uid="uid://jig8x7tpctqn" path="res://SmenusArt/Red/button_rectangle_border.png" id="1_icw5v"]
+
+[resource]
+texture = ExtResource("1_icw5v")
