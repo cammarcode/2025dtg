@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://ftn7eqnejbdu" path="res://sprites/fueltank.png" id="2_50v30"]
-[ext_resource type="Shader" uid="uid://ccnjiyrmwmq35" path="res://shaders/test.gdshader" id="3_jtldb"]
+[ext_resource type="Shader" uid="uid://b0iv80ef76bj8" path="res://shaders/wave.gdshader" id="3_cp117"]
 [ext_resource type="Script" uid="uid://deys3owiwqxma" path="res://scripts/minimap.gd" id="4_3mrxu"]
 [ext_resource type="Shader" uid="uid://c6oxtbovmcp41" path="res://shaders/minimap.gdshader" id="4_cp117"]
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
@@ -14,7 +14,7 @@ size = Vector2(64, 128)
 size = Vector2(63, 135)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
-shader = ExtResource("3_jtldb")
+shader = ExtResource("3_cp117")
 shader_parameter/level = 0.4
 shader_parameter/amplitude = 0.03
 shader_parameter/k = 5.0
