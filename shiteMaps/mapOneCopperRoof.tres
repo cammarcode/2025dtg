@@ -1,14 +1,10 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dtptve1xonn4u"]
 
-<<<<<<<< HEAD:shiteMaps/mapOneCopperRoof.tres
 [ext_resource type="Texture2D" uid="uid://5fgpss6p4m8d" path="res://shiteMaps/tilemap_packed.png" id="1_ra2pq"]
-========
-[ext_resource type="Texture2D" uid="uid://ccbqfdowrimkb" path="res://sprites/tileMaps/tilemap_packed.png" id="1_bt8sa"]
->>>>>>>> master:sprites/tileMaps/mapOneCopperRoof.tres
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3xkr"]
 resource_name = "CopperRoof"
-texture = ExtResource("1_bt8sa")
+texture = ExtResource("1_ra2pq")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1

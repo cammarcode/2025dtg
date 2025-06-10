@@ -1,14 +1,10 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ctrc0mkrim7g1"]
 
-<<<<<<<< HEAD:shiteMaps/road.tres
 [ext_resource type="Texture2D" uid="uid://djxmfyjhhqyo5" path="res://shiteMaps/tilemappacked.png" id="1_dhxel"]
-========
-[ext_resource type="Texture2D" uid="uid://djxmfyjhhqyo5" path="res://sprites/tileMaps/tilemappacked.png" id="1_cemlk"]
->>>>>>>> master:sprites/tileMaps/road.tres
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57723"]
 resource_name = "road"
-texture = ExtResource("1_cemlk")
+texture = ExtResource("1_dhxel")
 0:0/0 = 0
 0:1/0 = 0
 0:2/0 = 0
