@@ -2,25 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djxmfyjhhqyo5"
-<<<<<<<< HEAD:sprites/tileMaps/tilemappacked.png.import
+uid="uid://bi0tlhao3gp5d"
 path="res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"
-========
-path="res://.godot/imported/tilemappacked.png-0344900af92f18868f358fe038200b16.ctex"
->>>>>>>> 7ed51cf (Menus Started):shiteMaps/tilemappacked.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:sprites/tileMaps/tilemappacked.png.import
 source_file="res://sprites/tileMaps/tilemappacked.png"
 dest_files=["res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"]
-========
-source_file="res://shiteMaps/tilemappacked.png"
-dest_files=["res://.godot/imported/tilemappacked.png-0344900af92f18868f358fe038200b16.ctex"]
->>>>>>>> 7ed51cf (Menus Started):shiteMaps/tilemappacked.png.import
 
 [params]
 

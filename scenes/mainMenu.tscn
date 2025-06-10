@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bui7aq0hs2v2u"]
 
-[ext_resource type="Theme" uid="uid://doemdkdofh4ex" path="res://SmenusArt/Smenu.tres" id="1_qkhwq"]
+[ext_resource type="Theme" uid="uid://doemdkdofh4ex" path="res://sprites/menuArt/Smenu.tres" id="1_qkhwq"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3

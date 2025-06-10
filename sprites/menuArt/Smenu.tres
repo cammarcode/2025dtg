@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://doemdkdofh4ex"]
 
-[ext_resource type="StyleBox" uid="uid://dfbhwlydd8r30" path="res://SmenusArt/Buttons/normalGreenButton.tres" id="1_bp3iw"]
-[ext_resource type="StyleBox" uid="uid://cxnca8x55xjbb" path="res://SmenusArt/Buttons/pressedGreenButton.tres" id="2_blhld"]
-[ext_resource type="FontFile" uid="uid://c8aq3birc2b6h" path="res://SmenusArt/Kenney Future Narrow.ttf" id="2_bp3iw"]
+[ext_resource type="StyleBox" uid="uid://dfbhwlydd8r30" path="res://sprites/menuArt/Buttons/normalGreenButton.tres" id="1_bp3iw"]
+[ext_resource type="StyleBox" uid="uid://cxnca8x55xjbb" path="res://sprites/menuArt/Buttons/pressedGreenButton.tres" id="2_blhld"]
+[ext_resource type="FontFile" uid="uid://c8aq3birc2b6h" path="res://sprites/menuArt/Kenney Future Narrow.ttf" id="2_bp3iw"]
 
 [resource]
 default_font = ExtResource("2_bp3iw")
