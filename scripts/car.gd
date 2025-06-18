@@ -101,10 +101,10 @@ func _physics_process(delta):
 		turn_rate = 0
 	if Input.is_action_pressed("brake"):
 		speed -= brake_rate * delta
-	if Input.is_action_pressed("drift"):
-		drift = true
-	if Input.is_action_just_released("drift"):
-		drift = false
+	#if Input.is_action_pressed("drift"):
+		#drift = true
+	#if Input.is_action_just_released("drift"):
+		#drift = false
 	
 	if roating:
 		angle += delta*PI*10*randf_range(1.5,1.7)
@@ -136,4 +136,3 @@ func _on_fix_spin_timeout() -> void:
 
 func _on_boost_timer_timeout() -> void:
 	boost_cooldown = true
-	
