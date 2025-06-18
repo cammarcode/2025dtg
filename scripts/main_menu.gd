@@ -18,7 +18,8 @@ var levels = {
 }
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("scenes/mapOne.tscn")
+	$main.visible = false
+	$levelSelect.visible = true
 
 func _ready() -> void:
 	for level in levels:
@@ -32,3 +33,8 @@ func _ready() -> void:
 func on_level_selected(button):
 	Globals.selectedLevel = button
 	get_tree().change_scene_to_file(levels[button]) #change scene to map
+
+
+func _on_ls_back_button_pressed() -> void:
+	$main.visible = true
+	$levelSelect.visible = false
