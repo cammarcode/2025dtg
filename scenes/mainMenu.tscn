@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bui7aq0hs2v2u"]
+[gd_scene load_steps=4 format=3 uid="uid://bui7aq0hs2v2u"]
 
+[ext_resource type="Texture2D" uid="uid://dtwqkrll2jvic" path="res://sprites/menuArt/Green/button_square_border_525x325.png" id="1_3d1i7"]
+[ext_resource type="Script" uid="uid://bgmvykjk2gxb" path="res://scripts/main_menu.gd" id="1_48ign"]
 [ext_resource type="Theme" uid="uid://doemdkdofh4ex" path="res://sprites/menuArt/Smenu.tres" id="1_qkhwq"]
 
 [node name="mainMenu" type="Control"]
@@ -9,8 +11,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_48ign")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="textureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(525, 325)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.5
+offset_top = -162.5
+offset_right = 262.5
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3d1i7")
+
+[node name="main" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,48 +44,74 @@ offset_bottom = 112.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Label" parent="VBoxContainer"]
+[node name="title" type="Label" parent="main"]
 layout_mode = 2
 theme = ExtResource("1_qkhwq")
 text = "Pedal n' Petal"
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="main"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="playButton" type="Button" parent="VBoxContainer"]
+[node name="playButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
 text = "Play"
 
-[node name="settingsButton" type="Button" parent="VBoxContainer"]
+[node name="settingsButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
 text = " Settings"
 
-[node name="quitButton" type="Button" parent="VBoxContainer"]
+[node name="quitButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(525, 325)
+[node name="levelSelect" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -254.0
+offset_top = -154.0
+offset_right = 255.0
+offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="levelSelect" type="Label" parent="levelSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qkhwq")
+text = "Level Select"
+
+[node name="GridContainer" type="ScrollContainer" parent="levelSelect"]
+custom_minimum_size = Vector2(464, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="levelSelect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 6
+
+[node name="backButton" type="Button" parent="levelSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qkhwq")
+text = "  Back "
+
+[connection signal="pressed" from="main/playButton" to="." method="_on_play_button_pressed"]
