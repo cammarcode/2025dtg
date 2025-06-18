@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=14 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://deys3owiwqxma" path="res://scripts/minimap.gd" id="4_3mrxu"]
 [ext_resource type="Shader" uid="uid://c6oxtbovmcp41" path="res://shaders/minimap.gdshader" id="4_cp117"]
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
+[ext_resource type="Texture2D" uid="uid://buknpg2jvqvq2" path="res://sprites/minimap_bg.png" id="6_ctevm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
@@ -104,6 +105,13 @@ script = ExtResource("4_3mrxu")
 
 [node name="MinimapCamera" type="Camera2D" parent="CanvasLayer/SubViewportContainer/Minimap"]
 zoom = Vector2(0.05, 0.05)
+
+[node name="minimap_bg" type="TextureRect" parent="CanvasLayer"]
+z_index = -1
+offset_left = 1664.0
+offset_right = 1920.0
+offset_bottom = 256.0
+texture = ExtResource("6_ctevm")
 
 [node name="boost_timer" type="Timer" parent="."]
 wait_time = 5.0

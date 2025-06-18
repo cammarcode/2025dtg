@@ -9,7 +9,7 @@ void vertex() {
 }
 
 void fragment() {
-	
+
 	if (UV.y < level + amplitude * sin(k*(TIME+UV.x))){
 		COLOR.a = 0.0;
 	}
