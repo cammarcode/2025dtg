@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi12aj6iixyqf"]
+
+[ext_resource type="Texture2D" uid="uid://iudrlrxjmnvm" path="res://sprites/vine3.png" id="1_tfq28"]
+
+[node name="Vines" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tfq28")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

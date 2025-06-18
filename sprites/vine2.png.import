@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0tlhao3gp5d"
-path="res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"
+uid="uid://deh6in8w2rvvm"
+path="res://.godot/imported/vine2.png-32fa709d488721c28e31c42a49bf8051.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tileMaps/tilemappacked.png"
-dest_files=["res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"]
+source_file="res://sprites/vine2.png"
+dest_files=["res://.godot/imported/vine2.png-32fa709d488721c28e31c42a49bf8051.ctex"]
 
 [params]
 
