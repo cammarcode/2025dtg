@@ -1,9 +1,9 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cxnca8x55xjbb"]
 
-[ext_resource type="Texture2D" uid="uid://pwkssxujm83j" path="res://sprites/menuArt/Green/button_rectangle_border.png" id="1_prf2w"]
+[ext_resource type="Texture2D" uid="uid://bgp6ht654fm31" path="res://sprites/menuArt/Green/button_square_border.png" id="1_1l01x"]
 
 [resource]
-texture = ExtResource("1_prf2w")
+texture = ExtResource("1_1l01x")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0

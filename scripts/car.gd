@@ -19,6 +19,8 @@ var fuel = 150
 var fuel_max = 150
 var fuel_loss_rate = 10 # KiloGallons per second
 var boost_cooldown = true
+const stupid_number = 0.05
+var slide = false
 var drift = false
 var williamsucksflag = false
 
@@ -33,7 +35,8 @@ func _process(delta):
 		pass
 	$CanvasLayer/FuelTank/ColorRect.get_material().set_shader_parameter("level", 1-(fuel/fuel_max))
 	fuel -= fuel_loss_rate * delta
-	
+	$CanvasLayer/SubViewportContainer.get_material().set_shader_parameter("position", Vector2((stupid_number*position.x/256), (stupid_number*position.y/256))) #0.05 zoom
+	print(Vector2((position.x/256)*0.05, (position.y/256)*0.05))
 
 func _physics_process(delta):
 	if Input.is_action_pressed("accelerate") and not williamsucksflag:

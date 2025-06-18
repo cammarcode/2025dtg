@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3vb0f2ynfqjj"]
+
+[ext_resource type="Theme" uid="uid://ds5iedkesnpy6" path="res://sprites/menuArt/levelSelect.tres" id="1_5au5s"]
+
+[node name="LevelSelectButton" type="Button"]
+custom_minimum_size = Vector2(74, 64)
+theme = ExtResource("1_5au5s")
+text = " 1"
+metadata/level = 0
