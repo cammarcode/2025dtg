@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0tlhao3gp5d"
-path="res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"
+uid="uid://jig8x7tpctqn"
+path="res://.godot/imported/button_rectangle_border.png-e1c03dc49a7a1bc93818682a90853c1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tileMaps/tilemappacked.png"
-dest_files=["res://.godot/imported/tilemappacked.png-4747f02127198071969f90cd16d191f3.ctex"]
+source_file="res://sprites/menuArt/Red/button_rectangle_border.png"
+dest_files=["res://.godot/imported/button_rectangle_border.png-e1c03dc49a7a1bc93818682a90853c1e.ctex"]
 
 [params]
 
