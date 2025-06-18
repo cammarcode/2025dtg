@@ -12,7 +12,7 @@
 size = Vector2(136, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c35m8"]
-size = Vector2(136, 262)
+size = Vector2(136, 306)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
 shader = ExtResource("3_cp117")
@@ -55,7 +55,7 @@ color = Color(0, 0, 0, 1)
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
-position = Vector2(1, -4)
+position = Vector2(1, 18)
 shape = SubResource("RectangleShape2D_c35m8")
 
 [node name="spin_timer" type="Timer" parent="."]
@@ -125,6 +125,7 @@ offset = Vector2(-1, 122)
 position = Vector2(0, -120)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="spin_timer" to="." method="_on_spin_timer_timeout"]
 [connection signal="timeout" from="fix_spin" to="." method="_on_fix_spin_timeout"]
 [connection signal="timeout" from="boost_timer" to="." method="_on_boost_timer_timeout"]
