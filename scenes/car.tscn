@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=12 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -12,7 +12,7 @@
 size = Vector2(136, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c35m8"]
-size = Vector2(118, 302)
+size = Vector2(136, 262)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
 shader = ExtResource("3_cp117")
@@ -22,9 +22,6 @@ shader_parameter/k = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4clw4"]
 shader = ExtResource("4_cp117")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt2eu"]
-size = Vector2(22, 281.78)
 
 [node name="Car" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g25lt")
@@ -58,7 +55,7 @@ color = Color(0, 0, 0, 1)
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
-position = Vector2(0, 15)
+position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_c35m8")
 
 [node name="spin_timer" type="Timer" parent="."]
@@ -75,6 +72,7 @@ anchors_preset = 0
 
 [node name="Sprite2D" type="TextureRect" parent="CanvasLayer/FuelTank"]
 z_index = 1
+texture_filter = 1
 layout_mode = 0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_50v30")
@@ -119,25 +117,14 @@ script = ExtResource("4_jtldb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(1, -122)
 texture = ExtResource("2_qt2eu")
+offset = Vector2(-1, 122)
 
-[node name="slide1" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slide1"]
-position = Vector2(-63, 12.8901)
-shape = SubResource("RectangleShape2D_qt2eu")
-
-[node name="slide2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slide2"]
-position = Vector2(66, 12.2803)
-shape = SubResource("RectangleShape2D_qt2eu")
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -120)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="spin_timer" to="." method="_on_spin_timer_timeout"]
 [connection signal="timeout" from="fix_spin" to="." method="_on_fix_spin_timeout"]
 [connection signal="timeout" from="boost_timer" to="." method="_on_boost_timer_timeout"]
-[connection signal="body_entered" from="slide1" to="." method="_on_slide_1_body_entered"]
-[connection signal="body_exited" from="slide1" to="." method="_on_slide_1_body_exited"]
-[connection signal="body_entered" from="slide2" to="." method="_on_slide_2_body_entered"]
-[connection signal="body_exited" from="slide2" to="." method="_on_slide_2_body_exited"]

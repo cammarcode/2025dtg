@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqgl18g00idex"]
+
+[ext_resource type="Texture2D" uid="uid://deh6in8w2rvvm" path="res://sprites/vine2.png" id="2_lx0tn"]
+
+[node name="Vinesside" type="Node2D"]
+position = Vector2(-1, 2)
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 1.90735e-06)
+rotation = 3.14159
+texture = ExtResource("2_lx0tn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
