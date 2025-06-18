@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=13 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]

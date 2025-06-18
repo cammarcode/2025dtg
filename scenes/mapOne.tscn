@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://ckcpy0vid4y24" path="res://sprites/tileMaps/mapOneWhiteRoof.tres" id="3_kx1jt"]
 [ext_resource type="TileSet" uid="uid://ctrc0mkrim7g1" path="res://sprites/tileMaps/road.tres" id="4_7n1eb"]
 [ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="5_u23v3"]
-[ext_resource type="Script" uid="uid://br61kbfqf4l0" path="res://scripts/vines.gd" id="6_3qr0b"]
+[ext_resource type="Script" path="res://scripts/vines.gd" id="6_3qr0b"]
 [ext_resource type="PackedScene" uid="uid://bi12aj6iixyqf" path="res://scenes/vines.tscn" id="6_xl573"]
 [ext_resource type="PackedScene" uid="uid://bqgl18g00idex" path="res://scenes/vinesside.tscn" id="8_kx1jt"]
 
