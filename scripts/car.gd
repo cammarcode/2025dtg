@@ -36,6 +36,9 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
+	if Input.is_action_pressed("debug"):
+		fuel_max = 100000
+		fuel = 100000
 	if fuel <= 0:
 		dead = true
 		get_parent().find_child("death").visible = true
