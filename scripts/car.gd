@@ -130,7 +130,7 @@ func _on_area_2d_body_entered(body):
 			else:
 				williamsucksflag = true
 		else:
-			speed -= speed/2
+			speed = -speed/2
 
 
 func _on_spin_timer_timeout() -> void:
