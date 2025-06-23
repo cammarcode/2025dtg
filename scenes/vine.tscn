@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://br61kbfqf4l0" path="res://scripts/vines.gd" id="1_smajk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ol5"]
-size = Vector2(73, 608)
+size = Vector2(73, 1252)
 
 [node name="Vines" type="Area2D"]
 script = ExtResource("1_smajk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2216, 642)
+position = Vector2(2216, 668)
 shape = SubResource("RectangleShape2D_c6ol5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
