@@ -13,7 +13,7 @@
 size = Vector2(136, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c35m8"]
-size = Vector2(136, 306)
+size = Vector2(136, 308)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
 shader = ExtResource("3_cp117")
@@ -51,7 +51,7 @@ color = Color(0.86495, 0, 0.177401, 1)
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
-position = Vector2(1, 18)
+position = Vector2(1, 19)
 shape = SubResource("RectangleShape2D_c35m8")
 
 [node name="spin_timer" type="Timer" parent="."]
