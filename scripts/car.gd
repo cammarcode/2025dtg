@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const max_speed = 1800.0
+const max_speed = 2500.0
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
@@ -31,6 +31,13 @@ func angle_to_vector(): # read the function name fuckwad
 	velocity_vector = Vector2(sin(angle), -cos(angle))
 
 func _process(delta):
+	if Input.is_action_pressed("escape"):
+		get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
+	if Input.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+	if Input.is_action_pressed("debug"):
+		fuel_max = 100000
+		fuel = 100000
 	if fuel <= 0:
 		pass
 	$CanvasLayer/FuelTank/ColorRect.get_material().set_shader_parameter("level", 1-(fuel/fuel_max))
