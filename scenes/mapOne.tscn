@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cy6v161psqa7t"]
+[gd_scene load_steps=11 format=4 uid="uid://cy6v161psqa7t"]
 
 [ext_resource type="TileSet" uid="uid://dtptve1xonn4u" path="res://sprites/tileMaps/mapOneCopperRoof.tres" id="1_xl573"]
 [ext_resource type="TileSet" uid="uid://dgldnpkrmlaof" path="res://sprites/tileMaps/mapOneGreyRoof.tres" id="2_3qr0b"]
@@ -11,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qr0b"]
 size = Vector2(108, 590)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx1jt"]
+size = Vector2(298, 214)
 
 [node name="mapOne" type="Node2D"]
 visibility_layer = 3
@@ -60,4 +63,49 @@ position = Vector2(2248, 691)
 position = Vector2(2273, 645)
 shape = SubResource("RectangleShape2D_3qr0b")
 
+[node name="wintest" type="Area2D" parent="."]
+position = Vector2(18, 522)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="wintest"]
+z_index = 1
+offset_right = 299.0
+offset_bottom = 212.0
+color = Color(0.678431, 0.376471, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="wintest"]
+z_index = 1
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 296.0
+offset_bottom = 247.0
+text = "Go here to win
+WOW WHAT A COOL WIN OMG OMG fsdiofjsdna"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wintest"]
+position = Vector2(154, 106)
+shape = SubResource("RectangleShape2D_kx1jt")
+
+[node name="death" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="death"]
+offset_left = 587.0
+offset_top = 256.0
+offset_right = 1277.0
+offset_bottom = 677.0
+color = Color(0.665603, 5.07779e-06, 2.83971e-06, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="death"]
+z_index = 5
+offset_left = 651.0
+offset_top = 297.0
+offset_right = 1239.0
+offset_bottom = 650.0
+theme_override_font_sizes/normal_font_size = 45
+text = "YOU DIED IDIOT
+Press R to restart
+Press Esc for main menu"
+
 [connection signal="body_entered" from="Vines" to="Vines" method="_on_body_entered"]
+[connection signal="area_entered" from="wintest" to="Car" method="_on_wintest_area_entered"]
