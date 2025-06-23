@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const max_speed = 1800.0
+const max_speed = 2500.0
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
