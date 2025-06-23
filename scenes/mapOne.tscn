@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bi12aj6iixyqf" path="res://scenes/vines.tscn" id="6_xl573"]
 [ext_resource type="PackedScene" uid="uid://ybirda424xqa" path="res://scenes/vine.tscn" id="7_3qr0b"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx1jt"]
+size = Vector2(298, 214)
+
 [node name="mapOne" type="Node2D"]
 visibility_layer = 3
 
@@ -51,11 +54,53 @@ layer_0/tile_data = PackedInt32Array(196626, 1, 0, 262162, 1, 0, 327698, 1, 0, 3
 [node name="Vines2" parent="." instance=ExtResource("7_3qr0b")]
 position = Vector2(-487, 1571)
 
-[node name="Vinemap" parent="Vines2" instance=ExtResource("6_xl573")]
-layer_0/tile_data = PackedInt32Array(196626, 1, 0, 262162, 1, 0, 327698, 1, 0, 393234, 1, 0, 458770, 1, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vines"]
+position = Vector2(2273, 645)
+shape = SubResource("RectangleShape2D_3qr0b")
 
-[node name="Vines3" parent="." instance=ExtResource("7_3qr0b")]
-position = Vector2(2155, -28)
+[node name="wintest" type="Area2D" parent="."]
+position = Vector2(18, 522)
+metadata/_edit_group_ = true
 
-[node name="Vinemap" parent="Vines3" instance=ExtResource("6_xl573")]
-layer_0/tile_data = PackedInt32Array(196626, 1, 0, 262162, 1, 0, 393234, 1, 0, 327698, 1, 0, 458770, 1, 0)
+[node name="ColorRect" type="ColorRect" parent="wintest"]
+z_index = 1
+offset_right = 299.0
+offset_bottom = 212.0
+color = Color(0.678431, 0.376471, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="wintest"]
+z_index = 1
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 296.0
+offset_bottom = 247.0
+text = "Go here to win
+WOW WHAT A COOL WIN OMG OMG fsdiofjsdna"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wintest"]
+position = Vector2(154, 106)
+shape = SubResource("RectangleShape2D_kx1jt")
+
+[node name="death" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="death"]
+offset_left = 587.0
+offset_top = 256.0
+offset_right = 1277.0
+offset_bottom = 677.0
+color = Color(0.665603, 5.07779e-06, 2.83971e-06, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="death"]
+z_index = 5
+offset_left = 651.0
+offset_top = 297.0
+offset_right = 1239.0
+offset_bottom = 650.0
+theme_override_font_sizes/normal_font_size = 45
+text = "YOU DIED IDIOT
+Press R to restart
+Press Esc for main menu"
+
+[connection signal="body_entered" from="Vines" to="Vines" method="_on_body_entered"]
+[connection signal="area_entered" from="wintest" to="Car" method="_on_wintest_area_entered"]
