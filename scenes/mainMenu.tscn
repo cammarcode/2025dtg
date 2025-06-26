@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bui7aq0hs2v2u"]
+[gd_scene load_steps=5 format=3 uid="uid://bui7aq0hs2v2u"]
 
 [ext_resource type="Texture2D" uid="uid://dtwqkrll2jvic" path="res://sprites/menuArt/Green/button_square_border_525x325.png" id="1_3d1i7"]
 [ext_resource type="Script" uid="uid://bgmvykjk2gxb" path="res://scripts/main_menu.gd" id="1_48ign"]
 [ext_resource type="Theme" uid="uid://doemdkdofh4ex" path="res://sprites/menuArt/Smenu.tres" id="1_qkhwq"]
+[ext_resource type="Texture2D" uid="uid://liv4uc8ndplk" path="res://sprites/Screenshot 2024-12-15 001639.png" id="2_l7wge"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_48ign")
+
+[node name="textureRect2" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(525, 325)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -976.0
+offset_top = -537.0
+offset_right = 976.0
+offset_bottom = 537.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l7wge")
 
 [node name="textureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(525, 325)
@@ -65,7 +83,7 @@ custom_minimum_size = Vector2(288, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
-text = " Settings"
+text = "Settings"
 
 [node name="quitButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 0)
