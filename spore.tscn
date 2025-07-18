@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://4o7muedb6vqa"]
+
+[ext_resource type="Texture2D" uid="uid://btmuxvt4n4jy3" path="res://sprites/spore2.png" id="1_g2xo4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_crcy4"]
+particle_flag_disable_z = true
+velocity_pivot = Vector3(1, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(5, 5)
+amount = 800
+texture = ExtResource("1_g2xo4")
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_crcy4")

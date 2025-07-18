@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yk4juf7wreql"
-path="res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"
+uid="uid://bv23k7715ur5k"
+path="res://.godot/imported/button_rectangle_line.png-6c3dda64c5a12e2bdf2708ffd22e4a31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fueltank.png"
-dest_files=["res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"]
+source_file="res://sprites/menuArt/Green/button_rectangle_line.png"
+dest_files=["res://.godot/imported/button_rectangle_line.png-6c3dda64c5a12e2bdf2708ffd22e4a31.ctex"]
 
 [params]
 

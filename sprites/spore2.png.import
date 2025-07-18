@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yk4juf7wreql"
-path="res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"
+uid="uid://btmuxvt4n4jy3"
+path="res://.godot/imported/spore2.png-eda4082c106820f8b2392cc093ff6c90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fueltank.png"
-dest_files=["res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"]
+source_file="res://sprites/spore2.png"
+dest_files=["res://.godot/imported/spore2.png-eda4082c106820f8b2392cc093ff6c90.ctex"]
 
 [params]
 

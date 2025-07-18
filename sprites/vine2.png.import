@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yk4juf7wreql"
-path="res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"
+uid="uid://deh6in8w2rvvm"
+path="res://.godot/imported/vine2.png-32fa709d488721c28e31c42a49bf8051.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fueltank.png"
-dest_files=["res://.godot/imported/fueltank.png-271f6070557691216c2ce494193266c3.ctex"]
+source_file="res://sprites/vine2.png"
+dest_files=["res://.godot/imported/vine2.png-32fa709d488721c28e31c42a49bf8051.ctex"]
 
 [params]
 

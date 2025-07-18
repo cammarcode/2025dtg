@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw82ih4rh5rmo"]
+[gd_scene load_steps=2 format=3 uid="uid://dw82ih4rh5rmo"]
 
 [ext_resource type="PackedScene" uid="uid://cw8wsn46q8n64" path="res://scenes/car.tscn" id="1_wpuf1"]
-[ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="2_txnar"]
 
 [node name="test" type="Node2D"]
 
@@ -43,11 +42,6 @@ color = Color(0.762404, 0.762404, 0.762404, 1)
 
 [node name="Car" parent="." instance=ExtResource("1_wpuf1")]
 position = Vector2(587, 382)
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(26, 224)
-zoom = Vector2(0.6, 0.6)
-script = ExtResource("2_txnar")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

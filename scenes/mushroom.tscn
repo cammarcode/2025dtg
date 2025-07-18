@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://do7y3e3l1nid4"]
+
+[ext_resource type="Texture2D" uid="uid://kfhqdkxnee3t" path="res://sprites/mushroom.png" id="1_b0s10"]
+[ext_resource type="Script" uid="uid://cku32t7iiijfj" path="res://scripts/mushroom.gd" id="1_qxrkd"]
+[ext_resource type="Texture2D" uid="uid://gvb6phxwck2a" path="res://sprites/explosion_sheet.png" id="2_0bdi0"]
+[ext_resource type="PackedScene" uid="uid://4o7muedb6vqa" path="res://spore.tscn" id="4_6c3h1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0bdi0"]
+radius = 162.012
+
+[sub_resource type="Animation" id="Animation_6c3h1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qxrkd"]
+resource_name = "explode"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4pa7"]
+_data = {
+&"RESET": SubResource("Animation_6c3h1"),
+&"explode": SubResource("Animation_qxrkd")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxrkd"]
+radius = 411.122
+
+[node name="mushroom" type="Area2D"]
+script = ExtResource("1_qxrkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("1_b0s10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0bdi0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+texture_filter = 1
+position = Vector2(3, -53)
+scale = Vector2(3, 3)
+texture = ExtResource("2_0bdi0")
+hframes = 4
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f4pa7")
+}
+
+[node name="spore" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spore"]
+shape = SubResource("CircleShape2D_qxrkd")
+
+[node name="Node2D" parent="." instance=ExtResource("4_6c3h1")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="spore" to="." method="_on_spore_body_entered"]
+[connection signal="body_exited" from="spore" to="." method="_on_spore_body_exited"]

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ctrc0mkrim7g1"]
 
-[ext_resource type="Texture2D" uid="uid://djxmfyjhhqyo5" path="res://sprites/tileMaps/tilemappacked.png" id="1_cemlk"]
+[ext_resource type="Texture2D" uid="uid://bi0tlhao3gp5d" path="res://sprites/tileMaps/tilemappacked.png" id="1_cemlk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57723"]
 resource_name = "road"
