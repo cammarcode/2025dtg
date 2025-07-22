@@ -107,7 +107,7 @@ render_target_update_mode = 4
 script = ExtResource("4_3mrxu")
 
 [node name="MinimapCamera" type="Camera2D" parent="CanvasLayer/SubViewportContainer/Minimap"]
-zoom = Vector2(0.05, 0.05)
+zoom = Vector2(0.025, 0.025)
 
 [node name="minimap_bg" type="TextureRect" parent="CanvasLayer"]
 z_index = -1
