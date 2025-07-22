@@ -9,7 +9,7 @@ var turn_rate = 0 #rad/m/s           Current turning speed
 var turn_rate_rate = 0.01 #rad/m/s  How quickly turn speed increases
 var friction = 500 #px/s^2
 var brake_rate = 1400 #px/s^2
-var angle = 0
+var angle = 0.0
 var flag
 var prev_speed = 0
 var start_pos
@@ -34,7 +34,7 @@ func _ready():
 	start_pos = position
 
 func angle_to_vector(delta): # read the function name dumbass
-	velocity_vector = lerp(velocity_vector, Vector2(sin(angle), -cos(angle)), 10*delta)
+	velocity_vector = lerp(velocity_vector, Vector2(sin(angle), -cos(angle)), 12*delta)
 
 func _process(delta):
 	if Input.is_action_pressed("escape"):
@@ -64,7 +64,7 @@ func _physics_process(delta):
 			if not drift:
 				speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
 			else:
-				speed += acceleration * 0.5 * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
+				speed += acceleration * 0.3 * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
 			speed = clamp(speed, -max_speed/2,max_speed)
 		else:
 			# This section does max speeds and stopping
@@ -90,14 +90,14 @@ func _physics_process(delta):
 				angle_to = angle
 			else:
 				flag = true
-				turn_rate += turn_rate_rate*delta
+				turn_rate += turn_rate_rate*delta*3
 				turn_rate = clamp(turn_rate, 0, max_turn_rate)
-				angle_to -= turn_rate * delta * speed*1
+				angle_to -= turn_rate * delta * speed*1.5
 				# this code keeps the angle small
 				
-				angle = lerp(angle, angle_to, 6*PI*delta)
+				angle = lerp(angle, angle_to, 8*PI*delta)
 				temp_vec = Vector2(sin(angle_to), -cos(angle_to))
-				velocity_vector = lerp(velocity_vector, temp_vec, 3*delta)
+				velocity_vector = lerp(velocity_vector, temp_vec, 4*delta)
 				
 			
 		elif Input.is_action_pressed("turn_right"):
@@ -108,17 +108,18 @@ func _physics_process(delta):
 				angle += turn_rate * delta * speed
 				if angle > 2*PI:
 					angle += 2*PI
+				angle_to = angle
 			else:
 				if true:
 					flag = true
-					turn_rate += turn_rate_rate*delta
+					turn_rate += turn_rate_rate*delta * 3
 					turn_rate = clamp(turn_rate, 0, max_turn_rate)
-					angle_to += turn_rate * delta * speed*1
+					angle_to += turn_rate * delta * speed*1.5
 					# this code keeps the angle small
 					
-					angle = lerp(angle, angle_to, 6*PI*delta)
+					angle = lerp(angle, angle_to, 8*PI*delta)
 					temp_vec = Vector2(sin(angle_to), -cos(angle_to))
-					velocity_vector = lerp(velocity_vector, temp_vec, 3*delta)
+					velocity_vector = lerp(velocity_vector, temp_vec, 4*delta)
 
 		
 		if Input.is_action_pressed("boost")and boost_cooldown:
@@ -139,7 +140,10 @@ func _physics_process(delta):
 			#drift = false
 		
 		if roating:
-			angle += delta*PI*10*randf_range(1.5,1.7)
+			if drift:
+				angle_to += delta*PI*10*randf_range(1.5,1.7)
+			else:
+				angle += delta*PI*10*randf_range(1.5,1.7)
 		if not drift:
 			angle_to_vector(delta)
 		rotation = angle
