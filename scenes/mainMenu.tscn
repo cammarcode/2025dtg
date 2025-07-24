@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bui7aq0hs2v2u"]
+[gd_scene load_steps=6 format=3 uid="uid://bui7aq0hs2v2u"]
 
 [ext_resource type="Texture2D" uid="uid://dtwqkrll2jvic" path="res://sprites/menuArt/Green/button_square_border_525x325.png" id="1_3d1i7"]
 [ext_resource type="Script" uid="uid://bgmvykjk2gxb" path="res://scripts/main_menu.gd" id="1_48ign"]
 [ext_resource type="Theme" uid="uid://doemdkdofh4ex" path="res://sprites/menuArt/Smenu.tres" id="1_qkhwq"]
 [ext_resource type="Texture2D" uid="uid://liv4uc8ndplk" path="res://sprites/Screenshot 2024-12-15 001639.png" id="2_l7wge"]
+[ext_resource type="Script" uid="uid://3ntmghkevgf8" path="res://scripts/controlButton.gd" id="5_7nrmo"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -65,6 +66,7 @@ grow_vertical = 2
 layout_mode = 2
 theme = ExtResource("1_qkhwq")
 text = "Pedal n' Petal"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="main"]
 custom_minimum_size = Vector2(0, 32)
@@ -76,21 +78,323 @@ custom_minimum_size = Vector2(288, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
-text = "Play"
+text = "          Play         "
 
 [node name="settingsButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
-text = "Settings"
+text = "    Settings   "
 
 [node name="quitButton" type="Button" parent="main"]
 custom_minimum_size = Vector2(288, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
-text = "Quit"
+text = "           Quit         "
+
+[node name="settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.5
+offset_top = -112.5
+offset_right = 240.5
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="settings"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="settings"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="master" type="HBoxContainer" parent="settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="master" type="Label" parent="settings/master"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="masterSlider" type="HSlider" parent="settings/master"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+min_value = -30.0
+max_value = 0.0
+
+[node name="music" type="HBoxContainer" parent="settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="music" type="Label" parent="settings/music"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "  music   "
+
+[node name="musicSlider" type="HSlider" parent="settings/music"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+min_value = -30.0
+max_value = 0.0
+
+[node name="sounds" type="HBoxContainer" parent="settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="sounds" type="Label" parent="settings/sounds"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "sounds"
+
+[node name="soundsSlider" type="HSlider" parent="settings/sounds"]
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+min_value = -30.0
+max_value = 0.0
+
+[node name="ColorRect2" type="ColorRect" parent="settings"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="keybindsButton" type="Button" parent="settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 25
+text = "    Keybinds   "
+
+[node name="backButton" type="Button" parent="settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 25
+text = "  Back "
+
+[node name="keybinds" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.5
+offset_top = -112.5
+offset_right = 240.5
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="keybinds"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+text = "Keybinds"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="keybinds"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="row1" type="HBoxContainer" parent="keybinds"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="accelerate" type="HBoxContainer" parent="keybinds/row1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="accelerate" type="Label" parent="keybinds/row1/accelerate"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "Forward"
+
+[node name="accelerateButton" type="Button" parent="keybinds/row1/accelerate"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "accelerate"
+
+[node name="brake" type="HBoxContainer" parent="keybinds/row1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="brake" type="Label" parent="keybinds/row1/brake"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "brake"
+
+[node name="brakeButton" type="Button" parent="keybinds/row1/brake"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "brake"
+
+[node name="row2" type="HBoxContainer" parent="keybinds"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="turn_left" type="HBoxContainer" parent="keybinds/row2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="turn_left" type="Label" parent="keybinds/row2/turn_left"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "Left"
+
+[node name="leftButton" type="Button" parent="keybinds/row2/turn_left"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "turn_left"
+
+[node name="turn_right" type="HBoxContainer" parent="keybinds/row2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="turn_right" type="Label" parent="keybinds/row2/turn_right"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "Right"
+
+[node name="rightButton" type="Button" parent="keybinds/row2/turn_right"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "turn_right"
+
+[node name="row3" type="HBoxContainer" parent="keybinds"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="boost" type="HBoxContainer" parent="keybinds/row3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="boost" type="Label" parent="keybinds/row3/boost"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "boost"
+
+[node name="boostButton" type="Button" parent="keybinds/row3/boost"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "boost"
+
+[node name="drift" type="HBoxContainer" parent="keybinds/row3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="drift" type="Label" parent="keybinds/row3/drift"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "drift"
+
+[node name="driftButton" type="Button" parent="keybinds/row3/drift"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "drift"
+
+[node name="row4" type="HBoxContainer" parent="keybinds"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="restart" type="HBoxContainer" parent="keybinds/row4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="restart" type="Label" parent="keybinds/row4/restart"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "restart"
+
+[node name="restartButton" type="Button" parent="keybinds/row4/restart"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "restart"
+
+[node name="escape" type="HBoxContainer" parent="keybinds/row4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="escape" type="Label" parent="keybinds/row4/escape"]
+layout_mode = 2
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 20
+text = "escape"
+
+[node name="escapeButton" type="Button" parent="keybinds/row4/escape"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("5_7nrmo")
+action = "escape"
+
+[node name="ColorRect2" type="ColorRect" parent="keybinds"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="backButton" type="Button" parent="keybinds"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 25
+text = "  Back "
 
 [node name="levelSelect" type="VBoxContainer" parent="."]
 visible = false
@@ -130,7 +434,24 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qkhwq")
+theme_override_font_sizes/font_size = 25
 text = "  Back "
 
 [connection signal="pressed" from="main/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="main/settingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="main/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="settings/master/masterSlider" to="." method="_on_volume_slider_value_changed" binds= ["Master"]]
+[connection signal="value_changed" from="settings/music/musicSlider" to="." method="_on_volume_slider_value_changed" binds= ["Music"]]
+[connection signal="value_changed" from="settings/sounds/soundsSlider" to="." method="_on_volume_slider_value_changed" binds= ["Sounds"]]
+[connection signal="pressed" from="settings/keybindsButton" to="." method="_on_keybinds_button_pressed"]
+[connection signal="pressed" from="settings/backButton" to="." method="_on_ls_back_button_pressed"]
+[connection signal="toggled" from="keybinds/row1/accelerate/accelerateButton" to="keybinds/row1/accelerate/accelerateButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row1/brake/brakeButton" to="keybinds/row1/brake/brakeButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row2/turn_left/leftButton" to="keybinds/row2/turn_left/leftButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row2/turn_right/rightButton" to="keybinds/row2/turn_right/rightButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row3/boost/boostButton" to="keybinds/row3/boost/boostButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row3/drift/driftButton" to="keybinds/row3/drift/driftButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row4/restart/restartButton" to="keybinds/row4/restart/restartButton" method="_on_toggled"]
+[connection signal="toggled" from="keybinds/row4/escape/escapeButton" to="keybinds/row4/escape/escapeButton" method="_on_toggled"]
+[connection signal="pressed" from="keybinds/backButton" to="." method="_on_keybinds_back_button_pressed"]
 [connection signal="pressed" from="levelSelect/backButton" to="." method="_on_ls_back_button_pressed"]
