@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=18 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
 [ext_resource type="Texture2D" uid="uid://buknpg2jvqvq2" path="res://sprites/minimap_bg.png" id="6_ctevm"]
 [ext_resource type="Texture2D" uid="uid://gvb6phxwck2a" path="res://sprites/explosion_sheet.png" id="9_uraa1"]
+[ext_resource type="PackedScene" uid="uid://cxr2k2xbkkdgh" path="res://boom.tscn" id="10_gm33m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
@@ -184,6 +185,9 @@ vframes = 5
 libraries = {
 &"": SubResource("AnimationLibrary_f4pa7")
 }
+
+[node name="Node2D2" parent="." instance=ExtResource("10_gm33m")]
+position = Vector2(2, -139)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

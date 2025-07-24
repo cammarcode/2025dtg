@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 const max_speed = 2500.0
+var explode = false
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
 var max_turn_rate = 0.0025 #rad/m/s   Maximum turning speed
 var turn_rate = 0 #rad/m/s           Current turning speed
-var turn_rate_rate = 0.01 #rad/m/s  How quickly turn speed increases
+var turn_rate_rate = 0.0075 #rad/m/s  How quickly turn speed increases
 var friction = 500 #px/s^2
 var brake_rate = 1400 #px/s^2
 var angle = 0
@@ -55,7 +56,6 @@ func _process(delta):
 
 func _physics_process(delta):
 	if not dead:
-		
 		if Input.is_action_pressed("accelerate") and not williamsucksflag:
 			prev_speed = speed # for testing
 			

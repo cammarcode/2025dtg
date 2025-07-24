@@ -7,4 +7,5 @@ func _on_body_entered(body: Node2D) -> void:
 				body.fuel = body.fuel_max
 			else:
 				body.fuel += 50
+			body.explode = true
 			queue_free()

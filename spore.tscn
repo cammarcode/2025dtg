@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://4o7muedb6vqa"]
+[gd_scene load_steps=4 format=3 uid="uid://4o7muedb6vqa"]
 
-[ext_resource type="Texture2D" uid="uid://btmuxvt4n4jy3" path="res://sprites/spore2.png" id="1_g2xo4"]
+[sub_resource type="Gradient" id="Gradient_fgks2"]
+offsets = PackedFloat32Array(0, 0.981818)
+colors = PackedColorArray(0.451395, 0.000142419, 0.451392, 1, 1, 0.73671, 0.985193, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g2xo4"]
+gradient = SubResource("Gradient_fgks2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_crcy4"]
 particle_flag_disable_z = true
@@ -9,13 +14,15 @@ spread = 180.0
 initial_velocity_min = 10.0
 initial_velocity_max = 30.0
 gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_g2xo4")
 
 [node name="Node2D" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 scale = Vector2(5, 5)
-amount = 800
-texture = ExtResource("1_g2xo4")
+amount = 1500
 lifetime = 3.0
 randomness = 1.0
+trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_crcy4")
