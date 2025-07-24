@@ -16,9 +16,6 @@ void fragment(){
 		COLOR = vec4(0.2,0.5,0.2,1.0);
 		
 	}
-	
-	
-	
 	if (pow(UV.x-0.5,2) + pow(UV.y-0.5,2) >= 0.2){
 		COLOR.a=0.0;
 	}

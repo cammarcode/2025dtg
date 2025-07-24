@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=15 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://c6oxtbovmcp41" path="res://shaders/minimap.gdshader" id="4_cp117"]
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
 [ext_resource type="Texture2D" uid="uid://buknpg2jvqvq2" path="res://sprites/minimap_bg.png" id="6_ctevm"]
+[ext_resource type="Texture2D" uid="uid://dt81wtc3tp4ne" path="res://sprites/darkgrey.png" id="9_uraa1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
@@ -24,6 +25,10 @@ shader_parameter/k = 5.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4clw4"]
 shader = ExtResource("4_cp117")
 shader_parameter/position = Vector2(0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gm33m"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
 
 [node name="Car" type="CharacterBody2D" groups=["player"]]
 visibility_layer = 3
@@ -102,7 +107,7 @@ render_target_update_mode = 4
 script = ExtResource("4_3mrxu")
 
 [node name="MinimapCamera" type="Camera2D" parent="CanvasLayer/SubViewportContainer/Minimap"]
-zoom = Vector2(0.05, 0.05)
+zoom = Vector2(0.025, 0.025)
 
 [node name="minimap_bg" type="TextureRect" parent="CanvasLayer"]
 z_index = -1
@@ -126,6 +131,12 @@ offset = Vector2(-1, 122)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, -120)
+
+[node name="tyremarks" type="GPUParticles2D" parent="."]
+amount = 300
+texture = ExtResource("9_uraa1")
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_gm33m")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
