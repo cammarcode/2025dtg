@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-const max_speed = 2500.0
+const max_speed = 2200.0
 var explode = false
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
 var max_turn_rate = 0.0025 #rad/m/s   Maximum turning speed
 var turn_rate = 0 #rad/m/s           Current turning speed
-var turn_rate_rate = 0.0075 #rad/m/s  How quickly turn speed increases
+var turn_rate_rate = 0.01 #rad/m/s  How quickly turn speed increases
 var friction = 500 #px/s^2
 var brake_rate = 1400 #px/s^2
-var angle = 0
+var angle = 0.0
 var flag
 var prev_speed = 0
 var start_pos
@@ -25,6 +25,11 @@ var slide = false
 var drift = false
 var dead = false
 var williamsucksflag = false
+var slow_fuel_threshold = 600
+var fuel_loss_flag_for_doing_start_of_level = false
+var move_force = 0
+var angle_to = angle
+var temp_vec = velocity_vector
 
 func _ready():
 	start_pos = position
@@ -33,8 +38,8 @@ func _ready():
 	$fix_spin.start(0.1)
 	
 
-func angle_to_vector(): # read the function name fuckwad
-	velocity_vector = Vector2(sin(angle), -cos(angle))
+func angle_to_vector(delta): # read the function name dumbass
+	velocity_vector = lerp(velocity_vector, Vector2(sin(angle), -cos(angle)), 12*delta)
 
 func _process(delta):
 	if Input.is_action_pressed("escape"):
@@ -50,17 +55,23 @@ func _process(delta):
 		$AnimationPlayer.play('explode')
 		$death_timer.start(1)
 	$CanvasLayer/FuelTank/ColorRect.get_material().set_shader_parameter("level", 1-(fuel/fuel_max))
-	fuel -= fuel_loss_rate * delta
+	if  fuel_loss_flag_for_doing_start_of_level:
+		fuel -= fuel_loss_rate * delta * (0.5 + min(abs(speed), slow_fuel_threshold)/(slow_fuel_threshold*2))
 	$CanvasLayer/SubViewportContainer.get_material().set_shader_parameter("position", Vector2((stupid_number*position.x/256), (stupid_number*position.y/256))) #0.05 zoom
-	print(Vector2((position.x/256)*0.05, (position.y/256)*0.05))
+
 
 func _physics_process(delta):
 	if not dead:
+		drift = Input.is_action_pressed("drift")
 		if Input.is_action_pressed("accelerate") and not williamsucksflag:
+			fuel_loss_flag_for_doing_start_of_level = true
 			prev_speed = speed # for testing
 			
 			# acceleration is scaled so that its slower at higher speeds
-			speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
+			if not drift:
+				speed += acceleration * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
+			else:
+				speed += acceleration * 0.3 * delta * ((300/(clamp(speed, 0, max_speed)+300)) + 1) 
 			speed = clamp(speed, -max_speed/2,max_speed)
 		else:
 			# This section does max speeds and stopping
@@ -83,17 +94,20 @@ func _physics_process(delta):
 				# this code keeps the angle small
 				if angle < -2*PI:
 					angle += 2*PI
-				angle_to_vector()
+				angle_to = angle
 			else:
 				flag = true
-				turn_rate += turn_rate_rate*delta
+				turn_rate += turn_rate_rate*delta*3
 				turn_rate = clamp(turn_rate, 0, max_turn_rate)
-				angle += turn_rate * get_angle_to($Node2D.global_position) * speed/5
-				if angle > 2*PI:
-					angle = 2*PI
-				angle_to_vector()
+				angle_to -= turn_rate * delta * speed*1.5
+				# this code keeps the angle small
+				
+				angle = lerp(angle, angle_to, 8*PI*delta)
+				temp_vec = Vector2(sin(angle_to), -cos(angle_to))
+				velocity_vector = lerp(velocity_vector, temp_vec, 4*delta)
+				
 			
-		if Input.is_action_pressed("turn_right"):
+		elif Input.is_action_pressed("turn_right"):
 			if not drift:
 				flag = true
 				turn_rate += turn_rate_rate*delta
@@ -101,15 +115,19 @@ func _physics_process(delta):
 				angle += turn_rate * delta * speed
 				if angle > 2*PI:
 					angle += 2*PI
-				angle_to_vector()
+				angle_to = angle
 			else:
-				flag = true
-				turn_rate += turn_rate_rate*delta
-				turn_rate = clamp(turn_rate, 0, max_turn_rate)
-				angle -= turn_rate * get_angle_to($Node2D.global_position) * speed/5
-				if angle > 2*PI:
-					angle = 2*PI
-				angle_to_vector()
+				if true:
+					flag = true
+					turn_rate += turn_rate_rate*delta * 3
+					turn_rate = clamp(turn_rate, 0, max_turn_rate)
+					angle_to += turn_rate * delta * speed*1.5
+					# this code keeps the angle small
+					
+					angle = lerp(angle, angle_to, 8*PI*delta)
+					temp_vec = Vector2(sin(angle_to), -cos(angle_to))
+					velocity_vector = lerp(velocity_vector, temp_vec, 4*delta)
+
 		
 		if Input.is_action_pressed("boost")and boost_cooldown:
 			speed += 1000
@@ -121,6 +139,7 @@ func _physics_process(delta):
 		if flag == false:
 			turn_rate = 0
 		if Input.is_action_pressed("brake"):
+			fuel_loss_flag_for_doing_start_of_level = true
 			speed -= brake_rate * delta
 		#if Input.is_action_pressed("drift"):
 			#drift = true
@@ -128,9 +147,14 @@ func _physics_process(delta):
 			#drift = false
 		
 		if roating:
-			angle += delta*PI*10*randf_range(1.5,1.7)
-		
+			if drift:
+				angle_to += delta*PI*10*randf_range(1.5,1.7)
+			else:
+				angle += delta*PI*10*randf_range(1.5,1.7)
+		if not drift:
+			angle_to_vector(delta)
 		rotation = angle
+		print(angle, rotation)
 		# SPEED AND DIRECTION ARE STORED SEPERATELY!!!
 		velocity = velocity_vector * speed
 		move_and_slide()

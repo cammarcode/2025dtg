@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://doemdkdofh4ex"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://doemdkdofh4ex"]
 
 [ext_resource type="StyleBox" uid="uid://dfbhwlydd8r30" path="res://sprites/menuArt/Buttons/normalGreenButton.tres" id="1_bp3iw"]
 [ext_resource type="StyleBox" uid="uid://cxnca8x55xjbb" path="res://sprites/menuArt/Buttons/pressedGreenButton.tres" id="2_blhld"]
 [ext_resource type="FontFile" uid="uid://c8aq3birc2b6h" path="res://sprites/menuArt/Kenney Future Narrow.ttf" id="2_bp3iw"]
+[ext_resource type="Texture2D" uid="uid://bk4b8fm202lfd" path="res://sprites/menuArt/blank_image_texture.tres" id="3_wmudl"]
 
 [resource]
 default_font = ExtResource("2_bp3iw")
@@ -25,6 +26,10 @@ Button/styles/hover = ExtResource("1_bp3iw")
 Button/styles/normal = ExtResource("1_bp3iw")
 Button/styles/pressed = ExtResource("2_blhld")
 CheckButton/styles/pressed = ExtResource("1_bp3iw")
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber = ExtResource("3_wmudl")
+HSlider/icons/grabber_disabled = ExtResource("3_wmudl")
+HSlider/icons/grabber_highlight = ExtResource("3_wmudl")
 Label/colors/font_color = Color(0.184314, 0.843137, 0.572549, 1)
 Label/constants/outline_size = 4
 Label/font_sizes/font_size = 48
