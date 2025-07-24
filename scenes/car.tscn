@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=19 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -8,9 +8,8 @@
 [ext_resource type="Shader" uid="uid://c6oxtbovmcp41" path="res://shaders/minimap.gdshader" id="4_cp117"]
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
 [ext_resource type="Texture2D" uid="uid://buknpg2jvqvq2" path="res://sprites/minimap_bg.png" id="6_ctevm"]
-[ext_resource type="Texture2D" uid="uid://gvb6phxwck2a" path="res://sprites/explosion_sheet.png" id="9_uraa1"]
-[ext_resource type="PackedScene" uid="uid://cxr2k2xbkkdgh" path="res://boom.tscn" id="10_gm33m"]
 [ext_resource type="Texture2D" uid="uid://dt81wtc3tp4ne" path="res://sprites/darkgrey.png" id="9_uraa1"]
+[ext_resource type="PackedScene" uid="uid://cxr2k2xbkkdgh" path="res://boom.tscn" id="10_gm33m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
@@ -64,6 +63,7 @@ _data = {
 &"RESET": SubResource("Animation_6c3h1"),
 &"explode": SubResource("Animation_qxrkd")
 }
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gm33m"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
@@ -192,6 +192,7 @@ libraries = {
 
 [node name="Node2D2" parent="." instance=ExtResource("10_gm33m")]
 position = Vector2(2, -139)
+
 [node name="tyremarks" type="GPUParticles2D" parent="."]
 amount = 300
 texture = ExtResource("9_uraa1")
