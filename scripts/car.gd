@@ -147,7 +147,6 @@ func _physics_process(delta):
 		if not drift:
 			angle_to_vector(delta)
 		rotation = angle
-		print(angle, rotation)
 		# SPEED AND DIRECTION ARE STORED SEPERATELY!!!
 		velocity = velocity_vector * speed
 		move_and_slide()

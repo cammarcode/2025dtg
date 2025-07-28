@@ -16,7 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_48ign")
 
 [node name="textureRect2" type="TextureRect" parent="."]
-visible = false
 custom_minimum_size = Vector2(525, 325)
 layout_mode = 1
 anchors_preset = 8

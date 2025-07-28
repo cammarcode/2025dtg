@@ -1,3 +1,3 @@
 extends Node
 
-var selectedLevel = 0
+var selectedLevel = 1
