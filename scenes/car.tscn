@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw8wsn46q8n64"]
+[gd_scene load_steps=19 format=3 uid="uid://cw8wsn46q8n64"]
 
 [ext_resource type="Script" uid="uid://dpr3vb3jditmq" path="res://scripts/car.gd" id="1_g25lt"]
 [ext_resource type="Texture2D" uid="uid://yk4juf7wreql" path="res://sprites/fueltank.png" id="2_50v30"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://s7p8edjjpbun" path="res://scripts/camera.gd" id="4_jtldb"]
 [ext_resource type="Texture2D" uid="uid://buknpg2jvqvq2" path="res://sprites/minimap_bg.png" id="6_ctevm"]
 [ext_resource type="Texture2D" uid="uid://dt81wtc3tp4ne" path="res://sprites/darkgrey.png" id="9_uraa1"]
+[ext_resource type="PackedScene" uid="uid://cxr2k2xbkkdgh" path="res://boom.tscn" id="10_gm33m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyc5j"]
 size = Vector2(136, 295)
@@ -26,6 +27,43 @@ shader_parameter/k = 5.0
 shader = ExtResource("4_cp117")
 shader_parameter/position = Vector2(0, 0)
 
+[sub_resource type="Animation" id="Animation_6c3h1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qxrkd"]
+resource_name = "explode"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4pa7"]
+_data = {
+&"RESET": SubResource("Animation_6c3h1"),
+&"explode": SubResource("Animation_qxrkd")
+}
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gm33m"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
@@ -40,6 +78,7 @@ shape = SubResource("RectangleShape2D_eyc5j")
 
 [node name="ColorRect" type="ColorRect" parent="." groups=["player"]]
 visibility_layer = 2
+z_index = -2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -124,6 +163,7 @@ one_shot = true
 script = ExtResource("4_jtldb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture_filter = 1
 position = Vector2(1, -122)
 texture = ExtResource("2_qt2eu")
@@ -131,6 +171,27 @@ offset = Vector2(-1, 122)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, -120)
+
+[node name="death_timer" type="Timer" parent="."]
+process_mode = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+texture_filter = 1
+position = Vector2(8, -530)
+scale = Vector2(10, 10)
+texture = ExtResource("9_uraa1")
+hframes = 4
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f4pa7")
+}
+
+[node name="Node2D2" parent="." instance=ExtResource("10_gm33m")]
+position = Vector2(2, -139)
 
 [node name="tyremarks" type="GPUParticles2D" parent="."]
 amount = 300
@@ -143,3 +204,4 @@ process_material = SubResource("ParticleProcessMaterial_gm33m")
 [connection signal="timeout" from="spin_timer" to="." method="_on_spin_timer_timeout"]
 [connection signal="timeout" from="fix_spin" to="." method="_on_fix_spin_timeout"]
 [connection signal="timeout" from="boost_timer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

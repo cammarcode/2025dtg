@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const max_speed = 2200.0
+var explode = false
 var velocity_vector = Vector2(0,-1)
 var speed = 0 #px/s
 var acceleration = 300 #px/s^2
@@ -32,6 +33,10 @@ var temp_vec = velocity_vector
 
 func _ready():
 	start_pos = position
+	angle = PI/2
+	fix_spin = true
+	$fix_spin.start(0.1)
+	
 
 func angle_to_vector(delta): # read the function name dumbass
 	velocity_vector = lerp(velocity_vector, Vector2(sin(angle), -cos(angle)), 12*delta)
@@ -44,9 +49,11 @@ func _process(delta):
 	if Input.is_action_pressed("debug"):
 		fuel_max = 100000
 		fuel = 100000
-	if fuel <= 0:
+	if fuel <= 0 and !dead:
 		dead = true
-		get_parent().find_child("death").visible = true
+		$Sprite2D2.show()
+		$AnimationPlayer.play('explode')
+		$death_timer.start(1)
 	$CanvasLayer/FuelTank/ColorRect.get_material().set_shader_parameter("level", 1-(fuel/fuel_max))
 	if  fuel_loss_flag_for_doing_start_of_level:
 		fuel -= fuel_loss_rate * delta * (0.5 + min(abs(speed), slow_fuel_threshold)/(slow_fuel_threshold*2))
@@ -78,7 +85,7 @@ func _physics_process(delta):
 				speed = clamp(speed, -max_speed/2, 0)
 		flag = false
 		
-		if Input.is_action_pressed("turn_left") or fix_spin:  # fix_spin turns the player left for 1 frame lol
+		if Input.is_action_pressed("turn_left") or fix_spin:  # fix_spin turns the player left for 0.1s lol
 			if not drift:
 				flag = true
 				turn_rate += turn_rate_rate*delta
@@ -185,3 +192,8 @@ func _on_wintest_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	williamsucksflag = false
+
+
+func _on_death_timer_timeout() -> void:
+	print('a')
+	get_parent().find_child("death").visible = true

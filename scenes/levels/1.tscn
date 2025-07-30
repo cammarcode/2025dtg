@@ -9,11 +9,6 @@ size = Vector2(300, 300)
 
 [node name="1" type="Node2D"]
 
-[node name="Vines1" parent="." instance=ExtResource("1_le1x0")]
-
-[node name="Vinemap" parent="Vines1" instance=ExtResource("2_x3ltn")]
-layer_0/tile_data = PackedInt32Array(196626, 1, 0, 262162, 1, 0, 327698, 1, 0, 393234, 1, 0, 458770, 1, 0, 524306, 1, 0, 589842, 1, 0)
-
 [node name="Vines2" parent="." instance=ExtResource("1_le1x0")]
 position = Vector2(4354, 2218)
 

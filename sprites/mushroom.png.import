@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pix1ag4xu5vn"
-path="res://.godot/imported/tilemap_packed.png-2ac16a5c16a39dad6541f63a7d8d558f.ctex"
+uid="uid://kfhqdkxnee3t"
+path="res://.godot/imported/mushroom.png-2810abb507f090db9586d7eacf9d88f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tileMaps/tilemap_packed.png"
-dest_files=["res://.godot/imported/tilemap_packed.png-2ac16a5c16a39dad6541f63a7d8d558f.ctex"]
+source_file="res://sprites/mushroom.png"
+dest_files=["res://.godot/imported/mushroom.png-2810abb507f090db9586d7eacf9d88f0.ctex"]
 
 [params]
 
